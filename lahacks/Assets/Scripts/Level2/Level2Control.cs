@@ -42,6 +42,7 @@ public class Level2Control : MonoBehaviour {
 	void handleDeath()
 	{
 		isDead = true;
+		goY.velocity = Vector3.zero;
 		BroadcastMessage ("dead");
 
 	}
@@ -75,7 +76,7 @@ public class Level2Control : MonoBehaviour {
 			if (Input.GetKey (KeyCode.RightArrow)) {
 				//print("Forward!");
 				//this.transform.position+= Vector3.right * 0.2F;
-				goY.AddForce (new Vector2 (10, 0));
+				goY.AddForce (new Vector2 (5, 0));
 				//camera1.transform.position = new Vector2(go.transform.position.x, go.transform.position.y);
 				if (!facingRight) {
 					Flip ();
@@ -87,7 +88,7 @@ public class Level2Control : MonoBehaviour {
 			
 			if (Input.GetKey (KeyCode.LeftArrow)) {
 				//print("Forward!");
-				goY.AddForce (new Vector2 (-10, 0));
+				goY.AddForce (new Vector2 (-5, 0));
 				//camera1.transform.position = new Vector2(go.transform.position.x, go.transform.position.y);
 				print ("left");
 				if (facingRight) {
