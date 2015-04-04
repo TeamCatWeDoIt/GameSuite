@@ -12,6 +12,7 @@ public class level1Control : MonoBehaviour {
 	
 	Vector2 objectDist;
 	GameObject camera1;
+	string myLevel;
 	
 	
 	// Use this for initialization
@@ -109,7 +110,7 @@ public class level1Control : MonoBehaviour {
 		yield return null;									// return
 	}
 	
-	void OnCollisionEnter(Collision collision) {
+	void OnCollisionEnter2D(Collision2D collision) {
 		
 		// On collision, allow character to jump again. (wall jumps)
 		jumping = false;
@@ -120,17 +121,16 @@ public class level1Control : MonoBehaviour {
 		if (collision.gameObject.name == "End")
 		{
 			Application.LoadLevel("Level2");
-			
 		}
 
-		if (collision.gameObject.name == "Floor") 
+		else if (collision.gameObject.name == "Floor") 
 		{
 
 		}
 		
 	}
 	
-	void OnCollisionExit(Collision collisionInfo) {
+	void OnCollisionExit2D(Collision2D collisionInfo) {
 		print("No longer in contact with " + collisionInfo.transform.name);
 	}
 }

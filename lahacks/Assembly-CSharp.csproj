@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\Inventory.cs" />
      <Compile Include="Assets\Scripts\Item.cs" />
      <Compile Include="Assets\Scripts\Level 1\level1Control.cs" />
+     <Compile Include="Assets\Scripts\Level2\Level2Control.cs" />
      <Compile Include="Assets\Scripts\LevelChange.cs" />
      <Compile Include="Assets\Scripts\Rose.cs" />
      <Compile Include="Assets\Scripts\SmoothCamera.cs" />
