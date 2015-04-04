@@ -60,15 +60,11 @@ public class Controller : MonoBehaviour {
 	
 		if (!isDead) {
 			if (holdingItem == true) {
-
-				itemToHold.transform.position = this.transform.position - objectDist;
-
+				itemToHold.transform.position = this.transform.position + objectDist;
 			}
-	
-			// Very crude controller
 
 			if (Input.GetKeyDown ("tab")) {
-				// print("Printing contents of inventory!");
+				print("Printing contents of inventory!");
 				SendMessage ("printContents");
 			
 			}
@@ -80,12 +76,8 @@ public class Controller : MonoBehaviour {
 				jumping = true;
 				StartCoroutine ("Jump");
 				BroadcastMessage("jump");
-				
 				statusText.text = "BOING";
-
-			
-
-			}
+					}
 
 			if (Input.GetKey ("right")) {
 				//print("Forward!");
@@ -111,7 +103,6 @@ public class Controller : MonoBehaviour {
 			}
 
 			if (Input.GetKey ("down")) {
-				//print("Down!!");
 				goY.AddForce (Vector3.down * 50.0f);
 				statusText.text = "TURN DOWN FOR WAT meow";
 			}
@@ -130,6 +121,8 @@ public class Controller : MonoBehaviour {
 				print ("Attempting to drop.");
 				holdingItem = false;
 				statusText.text = "that was rly rly heavy";
+				itemToHold.transform.forward += this.transform.forward;
+
 			}
 
 		}
@@ -139,11 +132,7 @@ public class Controller : MonoBehaviour {
 			isDead = false;
 			BroadcastMessage("defaultPose");
 		}
-
-	
-
-
-
+			
 
 	}
 
