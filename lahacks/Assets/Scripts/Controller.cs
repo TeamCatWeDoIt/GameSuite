@@ -62,6 +62,11 @@ public class Controller : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		if (this.transform.position.y < 0)
+		{
+			handleDeath();
+		}
+
 		if (levelComplete) {
 			Application.LoadLevel (nextLevel);
 		}
@@ -89,8 +94,12 @@ public class Controller : MonoBehaviour {
 
 			if (Input.GetKey ("right")) {
 				//print("Forward!");
-				//this.transform.position+= Vector3.right * 0.2F;
-				goY.AddForce (Vector3.right * 20.0f);
+				this.transform.position+= Vector3.right * 0.1F;
+
+				if (Input.GetKeyDown ("up"))
+				{
+				goY.AddForce (Vector3.right * 40.0f);
+				}
 				if (!facingRight) {
 					Flip ();
 					facingRight = true;			// facing right
@@ -102,7 +111,14 @@ public class Controller : MonoBehaviour {
 
 			if (Input.GetKey ("left")) {
 				//print("Forward!");
-				goY.AddForce (Vector3.left * 20.0f);
+				this.transform.position+= Vector3.left * 0.1F;
+				if (Input.GetKeyDown ("up"))
+				{
+
+				goY.AddForce (Vector3.left * 40.0f);
+				}
+
+
 				if (facingRight) {
 					Flip ();
 					facingRight = false;			// facing right
