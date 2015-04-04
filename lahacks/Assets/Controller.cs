@@ -4,18 +4,15 @@ using UnityEngine.UI;
 
 public class Controller : MonoBehaviour {
 
-	GameObject go;		// finds the player object
-	Rigidbody goY;		// Gets the rigidbody
+	GameObject go;		// finds the player object and keep an active reference to it
+	Rigidbody goY;		// Gets the rigidbody of the player object
 
-	GameObject begin;		// finds the start object
-	Rigidbody beginY;		// Gets the rigidbody
-	
+	GameObject begin;		// finds the location of the start object
+
 	bool jumping;		// Initialize variable for jump
-	int maxHealth;		// max total of health the character can have
-	int health;			// how much health does the character now
-	int jumpHeight;
+	
 
-	bool facingRight;
+	bool facingRight;	
 
 	bool canPickUp;		
 	bool holdingItem;
@@ -24,18 +21,15 @@ public class Controller : MonoBehaviour {
 
 	Text statusText;
 	// Use this for initialization
+
 	void Start () {
 		Flip ();			// flip the  sprite
 		jumping = false; 	// we are not jumping at the beginning
-		maxHealth = 10;
-		health = maxHealth;		// starting health set here.
-		jumpHeight = 20;		// change to increase height of jump
 
 		go = GameObject.Find ("Player");			// finds the player object
 		goY = go.GetComponent<Rigidbody> ();		// 
 
 		begin = GameObject.Find ("StartPoint");			// finds the start object
-		beginY = go.GetComponent<Rigidbody> ();		// 
 
 		facingRight = true;					// character starts facing right
 
@@ -53,11 +47,7 @@ public class Controller : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (health == 0) {
-			this.transform.position = begin.transform.position;
-			health = maxHealth;
 
-		}
 
 		if (holdingItem == true) {
 
@@ -66,6 +56,12 @@ public class Controller : MonoBehaviour {
 		}
 	
 		// Very crude controller
+
+		if (Input.GetKeyDown ("tab" )) {
+			// print("Printing contents of inventory!");
+			SendMessage("printContents");
+			
+		}
 			
 		if (Input.GetKeyDown ("up") && !jumping ) {
 			print("Jump!");
@@ -162,29 +158,7 @@ public class Controller : MonoBehaviour {
 		
 		}
 
-		if (collision.gameObject.name == "Terrain")
-		{
-			print ("Fell out of stage!"); 	// print to console
-			this.health = 0; // kill character instantly
-			statusText.text = "Y U MAKE ME FALL";
-
-			
-			// Some code to bring us to the start point of a level
-			// Load new level
-			
-		}
-
-		if (collision.gameObject.name.Contains("dmg"))
-		{
-			print ("Taking Damage"); 	// print to console
-			this.health--;
-			statusText.text = "ow why u hurt me";
-			
-			// Some code to bring us to the start point of a level
-			// Load new level
-			
-		}
-
+	
 		if (collision.gameObject.name.Contains("pickUp"))
 		{
 
