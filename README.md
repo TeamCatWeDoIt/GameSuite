@@ -13,7 +13,11 @@
 ## APIs to Use
 
 - Mashape
+
+-- Voice RSS Text-to-Speech: https://www.mashape.com/voicerss/text-to-speech-1
+-- TTS Engine Text-to-Speech: https://www.mashape.com/ttsengine-com/text-to-speech-2
 - Bloomberg
 - Mashery
+
 -- Beats Music
 -- Touch Tunes
