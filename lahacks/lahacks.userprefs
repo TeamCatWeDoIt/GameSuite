@@ -1,9 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Controller.cs">
     <Files>
       <File FileName="Assets/Scripts/Controller.cs" Line="53" Column="3" />
       <File FileName="Assets/Scripts/HealthBar.cs" Line="45" Column="3" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Level2/Level2Control.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Level 1/level1Control.cs" Line="121" Column="40" />
+      <File FileName="Assets/Scripts/CharAnimator.cs" Line="34" Column="3" />
+      <File FileName="Assets/Scripts/SmoothCamera.cs" Line="27" Column="88" />
+      <File FileName="Assets/Scripts/Level2/Level2Control.cs" Line="44" Column="17" />
+>>>>>>> 3e5ac0afce037daae89310fc963fe55d96369487
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
