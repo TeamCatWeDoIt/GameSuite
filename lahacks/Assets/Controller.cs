@@ -67,6 +67,7 @@ public class Controller : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision) {
 
+		// On collision, allow character to jump again. (wall jumps)
 		print ("Collision");
 		jumping = false;
 
