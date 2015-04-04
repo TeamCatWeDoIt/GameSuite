@@ -23,6 +23,9 @@ public class Item : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision)
 	{
-		collision.gameObject.SendMessage ("takeDamage", damage);		// on collision sends this to the player
+		if (collision.gameObject.name == "Player") 
+		{
+			collision.gameObject.SendMessage ("takeDamage", damage);		// on collision sends this to the player
+		}
 	}
 }

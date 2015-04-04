@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour {
 		public int quantity; // each item has a number, when it hits 0 it should disappear from inventory
 		public string imgPath;
 
-		inventoryItem()
+		public inventoryItem()
 		{
 			id = 0;
 			name = "Empty";
@@ -30,6 +30,9 @@ public class Inventory : MonoBehaviour {
 	void Start () {
 		sizeOfInventory = 3;
 		myArray = new inventoryItem[sizeOfInventory]; 
+		for (int i = 0; i<sizeOfInventory; i++) {
+			myArray[i] = new inventoryItem();
+		}
 	}
 	
 	// Update is called once per frame
@@ -42,6 +45,10 @@ public class Inventory : MonoBehaviour {
 	void printContents()
 	{
 		print ("Here is what is in the inventory right now");
+		for (int i = 0; i < sizeOfInventory; i++) 
+		{
+			print(myArray[i].name + " ");
+		}
 
 	}
 
@@ -56,16 +63,30 @@ public class Inventory : MonoBehaviour {
 		// Add items will take the name, and quantity
 		// First check if existing
 		// if it already exists
-		if (checkExisting(g.name) != -1) {
+		if (checkExisting (g.name) != -1) {
 			// -1 means that the item does not exist
 			// if it is not -1, the object exists and we must update it
-			myArray[checkExisting(g.name)].quantity += q; 	// add on the quantity.
+			myArray [checkExisting (g.name)].quantity += q; 	// add on the quantity.
 
 		}
 
 		// otherwise, find the nearest inventory slot
 		// and add the item to it
 		// // TODO: Implement this feature
+		else {
+			int a = findEmptyInventorySlot();
+			if(a == -1)
+			{
+				print("Inventory full! Cannot pick up anymore!");
+			}
+			else
+			{
+				myArray[a].name = g.name;
+				myArray[a].quantity +=q;
+				print("Picked Up " + g.name);
+			}
+		}
+		printContents ();
 
 	}
 
@@ -83,7 +104,15 @@ public class Inventory : MonoBehaviour {
 		}
 		print ("No repeats; item does not yet exist in inventory");
 		return -1;
+	}
 
-
-}
+	int findEmptyInventorySlot()
+	{
+		for (int x = 0; x < sizeOfInventory; x++) {
+			if (myArray [x].name == "Empty") {
+				return x;
+			}
+		}
+		return -1;
+	}
 }
