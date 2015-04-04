@@ -83,6 +83,7 @@ public class Inventory : MonoBehaviour {
 			{
 				myArray[a].name = g.name;
 				myArray[a].quantity +=q;
+
 				print("Picked Up " + g.name);
 			}
 		}

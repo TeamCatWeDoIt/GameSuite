@@ -61,6 +61,7 @@
 'Assets/Scripts/HealthBar.cs'
 'Assets/Scripts/Inventory.cs'
 'Assets/Scripts/Item.cs'
+'Assets/Scripts/Level 1/EndPoint.cs'
 'Assets/Scripts/LevelChange.cs'
 'Assets/Scripts/Rose.cs'
 -r:'/Applications/Unity/Unity.app/Contents/Frameworks/Mono/lib/mono/unity/System.Runtime.Serialization.dll'
