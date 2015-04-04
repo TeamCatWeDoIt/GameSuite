@@ -21,6 +21,10 @@ public class Controller : MonoBehaviour {
 
 	Text statusText;
 
+	bool levelComplete;
+
+	public string nextLevel;
+
 
 
 	// Use this for initialization
@@ -29,6 +33,7 @@ public class Controller : MonoBehaviour {
 		Flip ();			// flip the  sprite
 		jumping = false; 	// we are not jumping at the beginning
 		isDead = false;
+		levelComplete = false;
 		go = GameObject.Find ("Player");			// finds the player object
 		goY = go.GetComponent<Rigidbody> ();		// 
 
@@ -57,7 +62,10 @@ public class Controller : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-	
+		if (levelComplete) {
+			Application.LoadLevel (nextLevel);
+		}
+
 		if (!isDead) {
 			if (holdingItem == true) {
 				itemToHold.transform.position = this.transform.position + objectDist;
@@ -147,7 +155,7 @@ public class Controller : MonoBehaviour {
 	
 	IEnumerator Jump() {
 
-		goY.AddForce(Vector3.up * 350.0f);					// Applies a force in the up
+		goY.AddForce(Vector3.up * 375.0f);					// Applies a force in the up
 		yield return null;									// return
 	}
 
@@ -163,6 +171,8 @@ public class Controller : MonoBehaviour {
 		{
 			print ("END LEVEL"); 	// print to console
 			statusText.text = "GG WELL PLAYED MEOW";
+			levelComplete = true;
+
 			// Some code to bring us to the start point of a level
 			// Load new level
 		
