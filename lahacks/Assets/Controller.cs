@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI; 
 
 public class Controller : MonoBehaviour {
 
@@ -21,6 +22,7 @@ public class Controller : MonoBehaviour {
 	GameObject itemToHold;
 	Vector3 objectDist;
 
+	Text statusText;
 	// Use this for initialization
 	void Start () {
 		Flip ();			// flip the  sprite
@@ -39,6 +41,11 @@ public class Controller : MonoBehaviour {
 
 		canPickUp = false;
 		holdingItem = false;		
+
+		statusText = GameObject.Find("statusText").GetComponent<Text>();
+
+		print (statusText.text);
+
 	}
 
 	
@@ -66,6 +73,7 @@ public class Controller : MonoBehaviour {
 			//this.transform.position+= Vector3.up * 0.2F; 
 			jumping = true;
 			StartCoroutine("Jump");
+			statusText.text = "BOING";
 		
 
 		}
@@ -78,6 +86,7 @@ public class Controller : MonoBehaviour {
 			{
 				Flip ();
 			facingRight = true;			// facing right
+				statusText.text = "kekekeke" ;
 			}
 
 
@@ -90,12 +99,14 @@ public class Controller : MonoBehaviour {
 			{
 				Flip ();
 				facingRight = false;			// facing right
+				statusText.text = "ooh hee hee";
 			}
 		}
 
 		 if (Input.GetKey ("down")) {
 			//print("Down!!");
 			goY.AddForce(Vector3.down * 50.0f);
+			statusText.text = "TURN DOWN FOR WAT meow";
 		}
 
 		if (Input.GetKeyDown ("space") && canPickUp && !holdingItem) {
@@ -111,6 +122,7 @@ public class Controller : MonoBehaviour {
 			
 			print ("Attempting to drop.");
 			holdingItem = false;
+			statusText.text = "that was rly rly heavy";
 		}
 
 
@@ -144,7 +156,7 @@ public class Controller : MonoBehaviour {
 		if (collision.gameObject.name == "EndPoint")
 		{
 			print ("END LEVEL"); 	// print to console
-
+			statusText.text = "GG WELL PLAYED MEOW";
 			// Some code to bring us to the start point of a level
 			// Load new level
 		
@@ -154,6 +166,8 @@ public class Controller : MonoBehaviour {
 		{
 			print ("Fell out of stage!"); 	// print to console
 			this.health = 0; // kill character instantly
+			statusText.text = "Y U MAKE ME FALL";
+
 			
 			// Some code to bring us to the start point of a level
 			// Load new level
@@ -164,6 +178,7 @@ public class Controller : MonoBehaviour {
 		{
 			print ("Taking Damage"); 	// print to console
 			this.health--;
+			statusText.text = "ow why u hurt me";
 			
 			// Some code to bring us to the start point of a level
 			// Load new level
