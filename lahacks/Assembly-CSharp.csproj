@@ -52,9 +52,10 @@
      <Compile Include="Assets\Scripts\HealthBar.cs" />
      <Compile Include="Assets\Scripts\Inventory.cs" />
      <Compile Include="Assets\Scripts\Item.cs" />
-     <Compile Include="Assets\Scripts\Level 1\EndPoint.cs" />
+     <Compile Include="Assets\Scripts\Level 1\level1Control.cs" />
      <Compile Include="Assets\Scripts\LevelChange.cs" />
      <Compile Include="Assets\Scripts\Rose.cs" />
+     <Compile Include="Assets\Scripts\SmoothCamera.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
