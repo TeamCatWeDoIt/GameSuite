@@ -39,19 +39,19 @@ public class Controller : MonoBehaviour {
 		}
 
 		 if (Input.GetKey ("right")) {
-			print("Forward!");
+			//print("Forward!");
 			//this.transform.position+= Vector3.right * 0.2F;
 			goY.AddForce(Vector3.right * 20.0f);
 
 		}
 
 		 if (Input.GetKey ("left")) {
-			print("Forward!");
+			//print("Forward!");
 			goY.AddForce(Vector3.left * 20.0f);
 		}
 
 		 if (Input.GetKey ("down")) {
-			print("Down!!");
+			//print("Down!!");
 			goY.AddForce(Vector3.down * 50.0f);
 		}
 
@@ -68,9 +68,16 @@ public class Controller : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) {
 
 		// On collision, allow character to jump again. (wall jumps)
-		print ("Collision");
+		//print ("Collision");
 		jumping = false;
 
+
+		if (collision.gameObject.name == "EndPoint")
+		{
+			print ("END LEVEL");
+		}
+
+	
 	}
 
 
