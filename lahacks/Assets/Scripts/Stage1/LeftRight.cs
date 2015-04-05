@@ -13,15 +13,15 @@ public class LeftRight : MonoBehaviour {
 	void Start () 
 	{
 		currX = gameObject.transform.position.x;
-		maxX = currX + 10;
-		minX = currX - 10;
+		maxX = currX + 4;
+		minX = currX - 4;
 		movingRight = true;
 		destroyed = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		while (!destroyed) 
+		if (!destroyed) 
 		{
 			if (currX <= maxX && movingRight) {
 				currX++;

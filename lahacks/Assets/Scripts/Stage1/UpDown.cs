@@ -13,15 +13,15 @@ public class UpDown : MonoBehaviour {
 	{
 		movingUp = true;
 		currY = gameObject.transform.position.y;
-		maxY = currY + 10;
-		minY = currY - 10;
+		maxY = currY + 4;
+		minY = currY - 4;
 		destroyed = false;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		while (!destroyed) 
+		if (!destroyed) 
 		{
 			if (currY <= maxY & movingUp) {
 				currY++;

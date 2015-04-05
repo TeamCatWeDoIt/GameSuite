@@ -1,38 +1,12 @@
 ﻿<Properties>
-<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Stage1/LeftRight.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Stage1/UpDown.cs">
     <Files>
-      <File FileName="Assets/Scripts/Stage1/Stage1Control.cs" Line="16" Column="2" />
-      <File FileName="Assets/Scripts/Controller.cs" Line="202" Column="46" />
-      <File FileName="Assets/Scripts/Stage1/LeftRight.cs" Line="25" Column="4" />
-      <File FileName="Assets/Scripts/Stage1/UpDown.cs" Line="31" Column="6" />
+      <File FileName="Assets/Scripts/Stage1/Stage1Control.cs" Line="18" Column="27" />
+      <File FileName="Assets/Scripts/Controller.cs" Line="243" Column="2" />
+      <File FileName="Assets/Scripts/Stage1/LeftRight.cs" Line="26" Column="24" />
+      <File FileName="Assets/Scripts/Stage1/UpDown.cs" Line="18" Column="21" />
     </Files>
-=======
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/level1objective.cs">
-    <Files>
-      <File FileName="Assets/Scripts/Controller.cs" Line="106" Column="1" />
-      <File FileName="Assets/Scripts/HealthBar.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/FlameAnim.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/FlameDamage.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/LevelChange.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Inventory.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/level0objective.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/level1objective.cs" Line="18" Column="6" />
-    </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Scripts" expanded="True" selected="True">
-              <Node name="Level 1" expanded="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
->>>>>>> origin/master
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

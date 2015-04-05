@@ -55,12 +55,12 @@
 -define:UNITY_EDITOR
 -define:UNITY_EDITOR_64
 -define:UNITY_EDITOR_OSX
-'Assets/Scenes/NewBehaviourScript.cs'
 'Assets/Scripts/CharAnimator.cs'
 'Assets/Scripts/Controller.cs'
 'Assets/Scripts/FlameAnim.cs'
 'Assets/Scripts/FlameDamage.cs'
 'Assets/Scripts/Flower.cs'
+'Assets/Scripts/GlobalManagerScript.cs'
 'Assets/Scripts/HealthBar.cs'
 'Assets/Scripts/Inventory.cs'
 'Assets/Scripts/Item.cs'
@@ -69,6 +69,9 @@
 'Assets/Scripts/LevelChange.cs'
 'Assets/Scripts/Rose.cs'
 'Assets/Scripts/SmoothCamera.cs'
+'Assets/Scripts/Stage1/LeftRight.cs'
+'Assets/Scripts/Stage1/Stage1Control.cs'
+'Assets/Scripts/Stage1/UpDown.cs'
 'Assets/Scripts/level0objective.cs'
 'Assets/Scripts/level1objective.cs'
 -r:'/Applications/Unity/Unity.app/Contents/Frameworks/Mono/lib/mono/unity/System.Runtime.Serialization.dll'
