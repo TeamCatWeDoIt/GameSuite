@@ -6,7 +6,6 @@ using System;
 public class Inventory : MonoBehaviour {
 
 
-//
 //	class inventoryItem
 //	{
 //		public int id; // each item will have an associated id
@@ -24,29 +23,28 @@ public class Inventory : MonoBehaviour {
 
 	public int currentInvSize; 	// current size of the inventory
 	public int sizeOfInventory;
-	public Text[] textArray;  // declaration
 	public RawImage[] imageArray;
-
-
+	public Text[] textArray;
+	
 
 	// Use this for initialization
 	void Start () {
 		currentInvSize = 0;
 		sizeOfInventory = 5;
 
-		textArray = new Text[sizeOfInventory];
-		textArray [0] = GameObject.Find ("Poppy").transform.GetComponent<Text>();
-		textArray [1] = GameObject.Find ("Gentian").transform.GetComponent<Text>();
-		textArray [2] = GameObject.Find ("Oxeye").transform.GetComponent<Text>();
-		textArray [3] = GameObject.Find ("Purple").transform.GetComponent<Text>();
-		textArray [4] = GameObject.Find ("Rose").transform.GetComponent<Text>();
-
 		imageArray = new RawImage[sizeOfInventory];
-		imageArray [0] = GameObject.Find ("slot1").transform.GetComponent<RawImage>();
-		imageArray [1] = GameObject.Find ("slot2").transform.GetComponent<RawImage>();
-		imageArray [2] = GameObject.Find ("slot3").transform.GetComponent<RawImage>();
-		imageArray [3] = GameObject.Find ("slot4").transform.GetComponent<RawImage>();
-		imageArray [4] = GameObject.Find ("slot5").transform.GetComponent<RawImage>();
+		textArray = new Text[sizeOfInventory];
+
+		imageArray [0] = GameObject.Find ("slot1").GetComponent<RawImage>();
+		textArray[0] = GameObject.Find("slot1").GetComponent<Text>();
+		imageArray [1] = GameObject.Find ("slot2").GetComponent<RawImage>();
+		textArray[1] = GameObject.Find("slot2").GetComponent<Text>();
+		imageArray [2] = GameObject.Find ("slot3").GetComponent<RawImage>();
+		textArray[2] = GameObject.Find("slot3").GetComponent<Text>();
+		imageArray [3] = GameObject.Find ("slot4").GetComponent<RawImage>();
+		textArray[3] = GameObject.Find("slot4").GetComponent<Text>();
+		imageArray [4] = GameObject.Find ("slot5").GetComponent<RawImage>();
+		textArray[4] = GameObject.Find("slot5").GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
@@ -62,7 +60,6 @@ public class Inventory : MonoBehaviour {
 		{
 			print(textArray[i].name + " ");
 		}
-
 	}
 
 
@@ -72,33 +69,54 @@ public class Inventory : MonoBehaviour {
 		addItem (g, 1);				// pickups generally just give one of each item
 	}
 
+
 	void addItem(GameObject g, int q)
 	{
 		// Add items will take the name, and quantity
-		// First check if existing
-		// if it already exists
-		int index = -1;
-			if (g.name.Contains ("rose")) {
-			index = 4;
+
+		// figure out which image to load
+		Texture t = loadImageTexture (g);
+
+		// add q number of the item
+		for (int i = 0; i < q; i++) {
+
+			// make sure the additional items do not surpass inventory size
+			if (currentInvSize < imageArray.Length) 
+			{
+				// change the slot image
+				imageArray [currentInvSize].texture = t;
+	
+				// increase the current inventory size
+				currentInvSize++;
+			}
+		}
+	}
+
+	Texture loadImageTexture(GameObject g)
+	{
+		Texture tex = new Texture();
+		
+		if (g.name.Contains ("rose")) 
+		{
+			tex = (Texture) Resources.Load("rosa-californica");
 		} 
 		else if (g.name.Contains ("purple")) 
 		{
-			index = 3;
+			tex = (Texture) Resources.Load("purple-loosestrife");
 		}
 		else if (g.name.Contains ("oxeye")) 
 		{
-			index = 2;
+			tex = (Texture) Resources.Load("oxeye-daisy");
 		}
 		else if (g.name.Contains ("gentian")) 
 		{
-			index = 1;
+			tex = (Texture) Resources.Load("elegant-gentian");
 		}
 		else if (g.name.Contains ("poppy")) 
 		{
-			index = 0;
+			tex = (Texture) Resources.Load("CA-poppy");
 		}
-		int orig = Int32.Parse (textArray [index].text.ToString ());
-		orig += q;
-		textArray [index].text = orig.ToString ();
+
+		return tex;
 	}
 }
