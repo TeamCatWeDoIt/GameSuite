@@ -5,10 +5,10 @@ using UnityEngine.UI;
 public class Controller : MonoBehaviour {
 
 	GameObject go;		// finds the player object and keep an active reference to it
-	Rigidbody goY;		// Gets the rigidbody of the player object
+	Rigidbody2D goY;		// Gets the rigidbody of the player object
 
 	GameObject begin;		// finds the location of the start object
-	Rigidbody beginBody;	// body of the item
+	Rigidbody2D beginBody;	// body of the item
 
 	bool jumping;		// Initialize variable for jump
 	
@@ -19,7 +19,7 @@ public class Controller : MonoBehaviour {
 	bool holdingItem;
 	GameObject itemToHold;
 	public GameObject projectile;
-	Vector3 objectDist;
+	Vector2 objectDist;
 
 	Text statusText;
 
@@ -34,7 +34,7 @@ public class Controller : MonoBehaviour {
 		jumping = false; 	// we are not jumping at the beginning
 		isDead = false;
 		go = GameObject.Find ("Player");			// finds the player object
-		goY = go.GetComponent<Rigidbody> ();		// 
+		goY = go.GetComponent<Rigidbody2D> ();		// 
 
 		begin = GameObject.Find ("StartPoint");			// finds the start object
 
@@ -74,11 +74,11 @@ public class Controller : MonoBehaviour {
 		if (!isDead) {
 			if (holdingItem == true) {
 				if(facingRight)
-				itemToHold.transform.position = this.transform.position + objectDist;
+				itemToHold.transform.position = (Vector2)(this.transform.position) + (Vector2)objectDist;
 				else
 				{
-					Vector3 testVec = new Vector3(-objectDist.x, objectDist.y, objectDist.z);
-					itemToHold.transform.position = this.transform.position + testVec;
+					Vector2 testVec = new Vector2(-objectDist.x, objectDist.y);
+					itemToHold.transform.position = (Vector2)(this.transform.position) + (Vector2)testVec;
 				}
 			}
 
@@ -105,41 +105,32 @@ public class Controller : MonoBehaviour {
 					}
 
 			if (Input.GetKey ("right")) {
-				//print("Forward!");
-				this.transform.position+= Vector3.right * 0.1F;
-
-				if (Input.GetKeyDown ("up"))
-				{
-				goY.AddForce (Vector3.right * 40.0f);
-				}
+				goY.AddForce (Vector2.right * 8.0f);
 				if (!facingRight) {
 					Flip ();
 					facingRight = true;			// facing right
 					statusText.text = "kekekeke";
 				}
-
-
 			}
 
 			if (Input.GetKey ("left")) {
 				//print("Forward!");
-				this.transform.position+= Vector3.left * 0.1F;
-				if (Input.GetKeyDown ("up"))
-				{
-
-				goY.AddForce (Vector3.left * 40.0f);
-				}
-
-
+				
+				goY.AddForce (-Vector2.right * 8.0f);
+				
 				if (facingRight) {
 					Flip ();
 					facingRight = false;			// facing right
 					statusText.text = "ooh hee hee";
 				}
 			}
-
+			if (Input.GetKey("up"))
+			{
+				Jump();
+			}
+			
 			if (Input.GetKey ("down")) {
-				goY.AddForce (Vector3.down * 50.0f);
+				goY.AddForce (-Vector2.up * 50.0f);
 				statusText.text = "TURN DOWN FOR WAT meow";
 			}
 
@@ -147,7 +138,7 @@ public class Controller : MonoBehaviour {
 				
 				print ("Attempting to pickup.");
 				holdingItem = true;
-				itemToHold.transform.position += new Vector3(0.23f, 1.0f, 0.0f);
+				itemToHold.transform.position = (Vector2)itemToHold.transform.position + new Vector2(0.23f, 1.0f);
 				// Freeze the position between the two objects while space is held down 
 				objectDist = itemToHold.transform.position - this.transform.position;
 			}
@@ -157,11 +148,11 @@ public class Controller : MonoBehaviour {
 				print ("Attempting to drop/throw");
 				holdingItem = false;
 				statusText.text = "that was rly rly heavy";
-				Rigidbody tempThrow = itemToHold.GetComponent<Rigidbody> (); // gets the rigid body
+				Rigidbody2D tempThrow = itemToHold.GetComponent<Rigidbody2D> (); // gets the rigid body
 				print (this.transform.forward);
 				// Vector3 tempU = new Vector3(0.0f, 80.0f, 1.0f);
-				Vector3 tempR = new Vector3(70.0f, 50.0f, 1.0f);
-				Vector3 tempL = new Vector3(-70.0f, 50.0f, 1.0f);
+				Vector2 tempR = new Vector2(70.0f, 50.0f);
+				Vector2 tempL = new Vector2(-70.0f, 50.0f);
 				/*
 				 * if (Input.GetKey ("up"))
 				    {
@@ -192,7 +183,7 @@ public class Controller : MonoBehaviour {
 	void Flip()
 	{	
 		// Multiply the player's x local scale by -1
-		Vector3 theScale = transform.localScale;
+		Vector2 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
@@ -200,11 +191,11 @@ public class Controller : MonoBehaviour {
 	
 	IEnumerator Jump() {
 
-		goY.AddForce(Vector3.up * 375.0f);					// Applies a force in the up
+		goY.AddForce(Vector2.up * 375.0f);					// Applies a force in the up
 		yield return null;									// return
 	}
 
-	void OnCollisionEnter(Collision collision) {
+	void OnCollisionEnter2D(Collision2D collision) {
 
 		// On collision, allow character to jump again. (wall jumps)
 		jumping = false;
@@ -236,7 +227,23 @@ public class Controller : MonoBehaviour {
 			
 		}
 
+		if (collision.gameObject.name.Contains ("rose")) 
+		{
+			BroadcastMessage("pickedUp", collision.gameObject);
+			Destroy(collision.gameObject);
+		}
+
+		if (collision.gameObject.name.Contains ("Trap")) 
+		{
+			BroadcastMessage("takeDamage", 1);
+		}
+
 	
+	}
+
+	void respawn()
+	{
+		Application.LoadLevel ("Stage0");
 	}
 
 	void OnCollisionExit(Collision collisionInfo) {
@@ -247,7 +254,6 @@ public class Controller : MonoBehaviour {
 			print ("OutOfRange!"); 	// print to console
 			canPickUp = false;
 		}
-		
 		
 		
 	}
