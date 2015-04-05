@@ -67,12 +67,32 @@ public class Inventory : MonoBehaviour {
 		// Add items will take the name, and quantity
 		// First check if existing
 		// if it already exists
-			if (g.name.Contains("rose")) 
-			{
-				int orig = Int32.Parse(myArray[4].text.ToString());
-				orig += q;
-				myArray[4].text = orig.ToString();
-			}
+		int index = -1;
+			if (g.name.Contains ("rose")) {
+			index = 4;
+
+		} 
+		else if (g.name.Contains ("purple")) 
+		{
+			index = 3;
+		}
+		else if (g.name.Contains ("oxeye")) 
+		{
+			index = 2;
+		}
+		else if (g.name.Contains ("gentian")) 
+		{
+			index = 1;
+		}
+		else if (g.name.Contains ("poppy")) 
+		{
+			index = 0;
+		}
+		int orig = Int32.Parse (myArray [index].text.ToString ());
+		orig += q;
+		myArray [index].text = orig.ToString ();
+		
+
 
 	}
 	
