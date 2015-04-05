@@ -70,7 +70,6 @@ public class Inventory : MonoBehaviour {
 		int index = -1;
 			if (g.name.Contains ("rose")) {
 			index = 4;
-
 		} 
 		else if (g.name.Contains ("purple")) 
 		{
