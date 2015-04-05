@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CharAnimator.cs" />
      <Compile Include="Assets\Scripts\Controller.cs" />
+     <Compile Include="Assets\Scripts\Fireball.cs" />
      <Compile Include="Assets\Scripts\FlameAnim.cs" />
      <Compile Include="Assets\Scripts\FlameDamage.cs" />
      <Compile Include="Assets\Scripts\Flower.cs" />

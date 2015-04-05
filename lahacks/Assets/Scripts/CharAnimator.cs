@@ -7,6 +7,8 @@ public class CharAnimator : MonoBehaviour {
 	public Sprite sprite1; // Drag your first sprite here
 	public Sprite sprite2; // Drag your second sprite here
 	public Sprite sprite3; // Drag your second sprite here
+	public Sprite sprite4; // Drag your second sprite here
+
 
 	bool action;
 
@@ -27,6 +29,12 @@ public class CharAnimator : MonoBehaviour {
 	
 	}
 
+	void attack()
+	{
+		// Attack sequence will launch a fireball.
+		spriteRenderer.sprite = sprite4;
+	}
+
 	void jump()
 	{
 		spriteRenderer.sprite = sprite2;
@@ -36,8 +44,6 @@ public class CharAnimator : MonoBehaviour {
 	{
 		// print ("Rendering normal pose");
 		StartCoroutine (idle ());
-
-	
 
 	}
 

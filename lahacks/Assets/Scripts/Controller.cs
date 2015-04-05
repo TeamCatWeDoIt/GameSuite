@@ -18,6 +18,7 @@ public class Controller : MonoBehaviour {
 	bool canPickUp;		
 	bool holdingItem;
 	GameObject itemToHold;
+	public GameObject projectile;
 	Vector3 objectDist;
 
 	Text statusText;
@@ -50,6 +51,11 @@ public class Controller : MonoBehaviour {
 
 	}
 
+	public bool isFacingRight()
+	{
+		return facingRight;
+	}
+
 	void handleDeath()
 	{
 		isDead = true;
@@ -70,7 +76,7 @@ public class Controller : MonoBehaviour {
 				if(facingRight)
 				itemToHold.transform.position = this.transform.position + objectDist;
 				else
-				{Vector3 reverseVec = new Vector3();
+				{
 					Vector3 testVec = new Vector3(-objectDist.x, objectDist.y, objectDist.z);
 					itemToHold.transform.position = this.transform.position + testVec;
 				}
@@ -81,6 +87,13 @@ public class Controller : MonoBehaviour {
 				SendMessage ("printContents");
 			
 			}
+
+			if (Input.GetKeyDown ("z")) {		// if z is pressed down
+				print("Shooting out fireball!");
+				BroadcastMessage("attack");
+				GameObject flame = Instantiate(projectile);
+				flame.SendMessage("setDirection",facingRight);
+			}
 			
 			if (Input.GetKeyDown ("up") && !jumping) {
 				print ("Jump!");
@@ -88,8 +101,7 @@ public class Controller : MonoBehaviour {
 				//this.transform.position+= Vector3.up * 0.2F; 
 				jumping = true;
 				StartCoroutine ("Jump");
-				BroadcastMessage("jump");
-				statusText.text = "BOING";
+				BroadcastMessage("jump");	statusText.text = "BOING";
 					}
 
 			if (Input.GetKey ("right")) {
@@ -135,7 +147,7 @@ public class Controller : MonoBehaviour {
 				
 				print ("Attempting to pickup.");
 				holdingItem = true;
-				itemToHold.transform.position += new Vector3(1.0f, 1.0f, 0.0f);
+				itemToHold.transform.position += new Vector3(0.23f, 1.0f, 0.0f);
 				// Freeze the position between the two objects while space is held down 
 				objectDist = itemToHold.transform.position - this.transform.position;
 			}

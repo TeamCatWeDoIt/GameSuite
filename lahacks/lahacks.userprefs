@@ -1,4 +1,24 @@
 ﻿<Properties>
+<<<<<<< HEAD
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Fireball.cs">
+    <Files>
+      <File FileName="Assets/Scripts/CharAnimator.cs" Line="34" Column="45" />
+      <File FileName="Assets/Scripts/Fireball.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="Scripts" expanded="True">
+              <Node name="Level 1" expanded="True" />
+              <Node name="CharAnimator.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+=======
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Stage1/Stage1Control.cs">
     <Files>
@@ -8,6 +28,7 @@
       <File FileName="Assets/Scripts/Stage1/Stump.cs" Line="23" Column="41" />
       <File FileName="Assets/Scripts/Controller.cs" Line="91" Column="30" />
     </Files>
+>>>>>>> 1957c7370d6c874c0fbc9209cbb6cef98230bf05
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
