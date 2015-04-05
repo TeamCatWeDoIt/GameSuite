@@ -6,7 +6,9 @@ public class GlobalManagerScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		if (!GameObject.Find ("GlobalGameManager")) {
+		GameObject g = GameObject.Find ("GlobalGameManager");
+
+		if (g == null) {
 
 			DontDestroyOnLoad(transform.gameObject);
 		}
