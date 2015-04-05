@@ -45,7 +45,8 @@ public class Stage1Control : MonoBehaviour {
 	void Update () {
 		if (!isDead) 
 		{
-			if (holdingItem == true) {
+			if (holdingItem) 
+			{
 				if (facingRight)
 					itemToHold.transform.position = (Vector2)(this.transform.position) + (Vector2)objectDist;
 				else {
@@ -99,10 +100,11 @@ public class Stage1Control : MonoBehaviour {
 		
 			if (Input.GetKeyDown (KeyCode.Space) & canPickUp & !holdingItem) 
 			{
-				holdingItem = true;
+
 				itemToHold.transform.position += new Vector3 (1.0f, 1.0f, 0.0f);
 				// Freeze the position between the two objects while space is held down 
 				objectDist = itemToHold.transform.position - this.transform.position;
+				holdingItem = true;
 			} 
 			else if (Input.GetKeyDown ("space") & holdingItem) {
 			
@@ -132,6 +134,7 @@ public class Stage1Control : MonoBehaviour {
 		
 		if (Input.GetKeyDown ("space") & isDead) {
 			SendMessage("respawn");
+			isDead = false;
 			BroadcastMessage("defaultPose");
 		}
 
@@ -160,26 +163,27 @@ public class Stage1Control : MonoBehaviour {
 		
 		
 		// Check for endpoint (crude, could be done better)
-		if (collision.gameObject.name == "End" & flowerTaken) 
-		{
-			Application.LoadLevel ("Level2");
+		if (collision.gameObject.name == "Portal" & flowerTaken) {
+			Application.LoadLevel ("trunkstage");
 		} 
-		else if (collision.gameObject.name == "Rose") 
+		else if (collision.gameObject.name == "Portal") 
+		{
+		}
+		else if (collision.gameObject.name == "rose") 
 		{
 			flowerTaken = true;
-			// add into inventory
-			Destroy(collision.gameObject);
-		}
-
-		else if(collision.gameObject.name.Contains("Stump") | collision.gameObject.name.Contains("Flame"))
+			BroadcastMessage("pickedUp", collision.gameObject);
+			Destroy (collision.gameObject);
+		} 
+		else if (collision.gameObject.name.Contains ("Stump") | collision.gameObject.name.Contains ("Flame")) 
 		{
-			Damage(1);
-		}
-		else if (collision.gameObject.name.Contains("Rock"))
+			BroadcastMessage ("takeDamage", 1);
+		} 
+		else if (collision.gameObject.name.Contains ("Rock") & !holdingItem) 
 		{
 			
 			canPickUp = true;
-			itemToHold = GameObject.Find(collision.gameObject.name);
+			itemToHold = GameObject.Find (collision.gameObject.name);
 			
 			// Some code to bring us to the start point of a level
 			// Load new level
@@ -188,11 +192,12 @@ public class Stage1Control : MonoBehaviour {
 		
 	}
 
-	void Damage (int q)
+	void dropped()
 	{
-
+		holdingItem = false;
+		Destroy (itemToHold);
+		canPickUp = false;
 	}
-	
 
 	void respawn()
 	{
@@ -201,5 +206,11 @@ public class Stage1Control : MonoBehaviour {
 
 	void OnCollisionExit2D(Collision2D collisionInfo) {
 		print("No longer in contact with " + collisionInfo.transform.name);
+	}
+
+	void handleDeath()
+	{
+		isDead = true;
+		BroadcastMessage ("dead");
 	}
 }

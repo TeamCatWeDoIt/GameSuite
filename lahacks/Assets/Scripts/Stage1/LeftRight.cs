@@ -52,6 +52,7 @@ public class LeftRight : MonoBehaviour {
 		{
 			destroyed = true;
 			Destroy(gameObject);
+			GameObject.Find("Player").SendMessage("dropped");
 		}
 		else if(collision.gameObject.name == "Player")
 		{
