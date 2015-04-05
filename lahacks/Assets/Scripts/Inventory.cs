@@ -22,23 +22,31 @@ public class Inventory : MonoBehaviour {
 //
 //	}
 
-
+	public int currentInvSize; 	// current size of the inventory
 	public int sizeOfInventory;
-	public Text[] myArray;  // declaration
+	public Text[] textArray;  // declaration
+	public RawImage[] imageArray;
 
 
 
 	// Use this for initialization
 	void Start () {
-
+		currentInvSize = 0;
 		sizeOfInventory = 5;
-		myArray = new Text[sizeOfInventory];
-		myArray [0] = GameObject.Find ("Poppy").transform.GetComponent<Text>();
-		myArray [1] = GameObject.Find ("Gentian").transform.GetComponent<Text>();
-		myArray [2] = GameObject.Find ("Oxeye").transform.GetComponent<Text>();
-		myArray [3] = GameObject.Find ("Purple").transform.GetComponent<Text>();
-		myArray [4] = GameObject.Find ("Rose").transform.GetComponent<Text>();
 
+		textArray = new Text[sizeOfInventory];
+		textArray [0] = GameObject.Find ("Poppy").transform.GetComponent<Text>();
+		textArray [1] = GameObject.Find ("Gentian").transform.GetComponent<Text>();
+		textArray [2] = GameObject.Find ("Oxeye").transform.GetComponent<Text>();
+		textArray [3] = GameObject.Find ("Purple").transform.GetComponent<Text>();
+		textArray [4] = GameObject.Find ("Rose").transform.GetComponent<Text>();
+
+		imageArray = new RawImage[sizeOfInventory];
+		imageArray [0] = GameObject.Find ("slot1").transform.GetComponent<RawImage>();
+		imageArray [1] = GameObject.Find ("slot2").transform.GetComponent<RawImage>();
+		imageArray [2] = GameObject.Find ("slot3").transform.GetComponent<RawImage>();
+		imageArray [3] = GameObject.Find ("slot4").transform.GetComponent<RawImage>();
+		imageArray [4] = GameObject.Find ("slot5").transform.GetComponent<RawImage>();
 	}
 	
 	// Update is called once per frame
@@ -52,7 +60,7 @@ public class Inventory : MonoBehaviour {
 		print ("Here is what is in the inventory right now");
 		for (int i = 0; i < sizeOfInventory; i++) 
 		{
-			print(myArray[i].name + " ");
+			print(textArray[i].name + " ");
 		}
 
 	}
@@ -89,12 +97,8 @@ public class Inventory : MonoBehaviour {
 		{
 			index = 0;
 		}
-		int orig = Int32.Parse (myArray [index].text.ToString ());
+		int orig = Int32.Parse (textArray [index].text.ToString ());
 		orig += q;
-		myArray [index].text = orig.ToString ();
-		
-
-
+		textArray [index].text = orig.ToString ();
 	}
-	
 }
