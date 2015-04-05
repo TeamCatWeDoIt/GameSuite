@@ -23,8 +23,6 @@ public class Controller : MonoBehaviour {
 
 	Text statusText;
 
-	public string nextLevel;
-
 
 
 	// Use this for initialization
@@ -105,7 +103,14 @@ public class Controller : MonoBehaviour {
 					}
 
 			if (Input.GetKey ("right")) {
-				goY.AddForce (Vector2.right * 8.0f);
+
+				this.transform.position += Vector3.right * 0.1F;	// using 3d vector for this still
+				
+				if (Input.GetKeyDown ("up"))
+				{
+					goY.AddForce (Vector2.right * 40.0f);
+				}
+
 				if (!facingRight) {
 					Flip ();
 					facingRight = true;			// facing right
@@ -116,7 +121,12 @@ public class Controller : MonoBehaviour {
 			if (Input.GetKey ("left")) {
 				//print("Forward!");
 				
-				goY.AddForce (-Vector2.right * 8.0f);
+				this.transform.position -= Vector3.right * 0.1F;	// using 3d vector for this still
+				
+				if (Input.GetKeyDown ("up"))
+				{
+					goY.AddForce (-Vector2.right * 40.0f);
+				}
 				
 				if (facingRight) {
 					Flip ();
