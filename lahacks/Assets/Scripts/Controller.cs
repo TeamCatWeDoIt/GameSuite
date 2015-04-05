@@ -8,6 +8,7 @@ public class Controller : MonoBehaviour {
 	Rigidbody goY;		// Gets the rigidbody of the player object
 
 	GameObject begin;		// finds the location of the start object
+	Rigidbody beginBody;	// body of the item
 
 	bool jumping;		// Initialize variable for jump
 	
@@ -73,7 +74,13 @@ public class Controller : MonoBehaviour {
 
 		if (!isDead) {
 			if (holdingItem == true) {
+				if(facingRight)
 				itemToHold.transform.position = this.transform.position + objectDist;
+				else
+				{Vector3 reverseVec = new Vector3();
+					Vector3 testVec = new Vector3(-objectDist.x, objectDist.y, objectDist.z);
+					itemToHold.transform.position = this.transform.position + testVec;
+				}
 			}
 
 			if (Input.GetKeyDown ("tab")) {
@@ -135,17 +142,34 @@ public class Controller : MonoBehaviour {
 				
 				print ("Attempting to pickup.");
 				holdingItem = true;
-				
+				itemToHold.transform.position += new Vector3(1.0f, 1.0f, 0.0f);
 				// Freeze the position between the two objects while space is held down 
 				objectDist = itemToHold.transform.position - this.transform.position;
 			}
 			
 			else if (Input.GetKeyDown ("space") && holdingItem) {
 				
-				print ("Attempting to drop.");
+				print ("Attempting to drop/throw");
 				holdingItem = false;
 				statusText.text = "that was rly rly heavy";
-				itemToHold.transform.forward += this.transform.forward;
+				Rigidbody tempThrow = itemToHold.GetComponent<Rigidbody> (); // gets the rigid body
+				print (this.transform.forward);
+				// Vector3 tempU = new Vector3(0.0f, 80.0f, 1.0f);
+				Vector3 tempR = new Vector3(70.0f, 50.0f, 1.0f);
+				Vector3 tempL = new Vector3(-70.0f, 50.0f, 1.0f);
+				/*
+				 * if (Input.GetKey ("up"))
+				    {
+					print ("throw up");
+					tempThrow.AddForce(tempU);
+				}
+				*/
+				 if (facingRight)
+				tempThrow.AddForce(tempR);
+				else
+				tempThrow.AddForce(tempL);
+
+				// itemToHold.transform.position += goY.velocity;
 
 			}
 
