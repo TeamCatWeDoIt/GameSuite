@@ -19,14 +19,8 @@ public class Fireball : MonoBehaviour {
 		// We need to know which direction the player is facing.
 
 
-	
-
-		// initialLaunch = new Vector3 (0.5f, 0.0f, 0.0f);
-
-		offset = new Vector3 (1.0f, 1.0f, 0.0f);
-
 		StartCoroutine (selfDestruct());
-		this.gameObject.transform.position = GameObject.Find ("Player").transform.position + offset;
+
 	}
 
 	void setDirection(bool d)
@@ -36,9 +30,15 @@ public class Fireball : MonoBehaviour {
 
 		if (d) {
 			initialLaunch = new Vector3 (0.5f, 0.0f, 0.0f);
-		}
-		else
+			offset = new Vector3 (2.0f, 1.0f, 0.0f);
+
+		} else {
 			initialLaunch = new Vector3 (-0.5f, 0.0f, 0.0f);
+			offset = new Vector3 (-2.0f, 1.0f, 0.0f);
+			this.gameObject.transform.RotateAround (transform.position, transform.up, 180f);
+		}
+
+		this.gameObject.transform.position = GameObject.Find ("Player").transform.position + offset;
 
 	}
 

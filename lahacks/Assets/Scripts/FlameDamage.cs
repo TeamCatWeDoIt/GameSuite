@@ -20,7 +20,7 @@ public class FlameDamage : MonoBehaviour {
 
 		findDistanceToPlayer ();
 
-		if (distToPlayerX < 0.5f && distToPlayerY < 0.5f) {
+		if (distToPlayerX < 0.5f && distToPlayerY < 1.0f) {
 			go.SendMessage("takeDamage", 1);
 		}
 	
@@ -32,7 +32,7 @@ public class FlameDamage : MonoBehaviour {
 		distToPlayerX = Mathf.Abs(this.transform.position.x - go.transform.position.x);
 		distToPlayerY = Mathf.Abs(this.transform.position.y - go.transform.position.y);
 
-		// print (distToPlayerX + ", " + distToPlayerY);
+		 print (distToPlayerX + ", " + distToPlayerY);
 
 	}
 }
