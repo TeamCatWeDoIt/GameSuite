@@ -13,8 +13,8 @@ public class LeftRight : MonoBehaviour {
 	void Start () 
 	{
 		currX = gameObject.transform.position.x;
-		maxX = currX + 4;
-		minX = currX - 4;
+		maxX = currX + 10;
+		minX = currX - 10;
 		movingRight = true;
 		destroyed = false;
 	}
@@ -25,7 +25,7 @@ public class LeftRight : MonoBehaviour {
 		{
 			if (currX <= maxX && movingRight) {
 				currX++;
-				Vector3 temp = new Vector3(1,0,0);
+				Vector3 temp = new Vector3(0.1f,0,0);
 				gameObject.transform.position += temp;
 				if(currX > maxX)
 				{
@@ -35,7 +35,7 @@ public class LeftRight : MonoBehaviour {
 			else if(currX >= minX && !movingRight)
 			{
 				currX--;
-				Vector3 temp = new Vector3(-1,0,0);
+				Vector3 temp = new Vector3(-0.1f,0,0);
 				gameObject.transform.position+=temp;
 				if(currX < minX)
 				{
@@ -51,6 +51,7 @@ public class LeftRight : MonoBehaviour {
 		if(collision.gameObject.name.Contains ("Rock"))
 		{
 			destroyed = true;
+			Destroy(gameObject);
 		}
 		else if(collision.gameObject.name == "Player")
 		{

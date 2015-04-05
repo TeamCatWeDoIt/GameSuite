@@ -1,11 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Stage1/UpDown.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Stage1/LeftRight.cs">
     <Files>
-      <File FileName="Assets/Scripts/Stage1/Stage1Control.cs" Line="18" Column="27" />
-      <File FileName="Assets/Scripts/Controller.cs" Line="243" Column="2" />
-      <File FileName="Assets/Scripts/Stage1/LeftRight.cs" Line="26" Column="24" />
-      <File FileName="Assets/Scripts/Stage1/UpDown.cs" Line="18" Column="21" />
+      <File FileName="Assets/Scripts/Stage1/Stage1Control.cs" Line="125" Column="34" />
+      <File FileName="Assets/Scripts/Stage1/LeftRight.cs" Line="17" Column="20" />
+      <File FileName="Assets/Scripts/Stage1/UpDown.cs" Line="17" Column="20" />
+      <File FileName="Assets/Scripts/Level 1/level1Control.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/CharAnimator.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Stage1/Stump.cs" Line="23" Column="41" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

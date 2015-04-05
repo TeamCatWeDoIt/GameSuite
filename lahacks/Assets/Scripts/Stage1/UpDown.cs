@@ -13,8 +13,8 @@ public class UpDown : MonoBehaviour {
 	{
 		movingUp = true;
 		currY = gameObject.transform.position.y;
-		maxY = currY + 4;
-		minY = currY - 4;
+		maxY = currY + 10;
+		minY = currY - 10;
 		destroyed = false;
 	}
 	
@@ -25,7 +25,7 @@ public class UpDown : MonoBehaviour {
 		{
 			if (currY <= maxY & movingUp) {
 				currY++;
-				Vector3 temp = new Vector3(0,1,0);
+				Vector3 temp = new Vector3(0,0.1f,0);
 				gameObject.transform.position += temp;
 				if(currY > maxY)
 				{
@@ -35,7 +35,7 @@ public class UpDown : MonoBehaviour {
 			else if(currY >= minY & !movingUp)
 			{
 				currY--;
-				Vector3 temp = new Vector3(0,-1,0);
+				Vector3 temp = new Vector3(0,-0.1f,0);
 				gameObject.transform.position += temp;
 				if(currY < minY)
 				{
@@ -51,6 +51,7 @@ public class UpDown : MonoBehaviour {
 		if(collision.gameObject.name.Contains ("Rock"))
 		{
 			destroyed = true;
+			Destroy(gameObject);
 		}
 		else if(collision.gameObject.name == "Player")
 		{

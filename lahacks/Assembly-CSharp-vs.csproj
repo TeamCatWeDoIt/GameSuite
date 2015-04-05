@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\SmoothCamera.cs" />
      <Compile Include="Assets\Scripts\Stage1\LeftRight.cs" />
      <Compile Include="Assets\Scripts\Stage1\Stage1Control.cs" />
+     <Compile Include="Assets\Scripts\Stage1\Stump.cs" />
      <Compile Include="Assets\Scripts\Stage1\UpDown.cs" />
      <Compile Include="Assets\Scripts\level0objective.cs" />
      <Compile Include="Assets\Scripts\level1objective.cs" />
