@@ -86,7 +86,6 @@ public class Stage1Control : MonoBehaviour {
 				//print("Forward!");
 				goY.AddForce (new Vector2 (-10, 0));
 				//camera1.transform.position = new Vector2(go.transform.position.x, go.transform.position.y);
-				print ("left");
 				if (facingRight) {
 					Flip ();
 					facingRight = false;			// facing right
@@ -104,7 +103,8 @@ public class Stage1Control : MonoBehaviour {
 				itemToHold.transform.position += new Vector3 (1.0f, 1.0f, 0.0f);
 				// Freeze the position between the two objects while space is held down 
 				objectDist = itemToHold.transform.position - this.transform.position;
-			} else if (Input.GetKeyDown ("space") & holdingItem) {
+			} 
+			else if (Input.GetKeyDown ("space") & holdingItem) {
 			
 				print ("Attempting to drop.");
 				holdingItem = false;
