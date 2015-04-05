@@ -1,4 +1,5 @@
 ﻿<Properties>
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/CharAnimator.cs">
     <Files>
@@ -18,6 +19,16 @@
         </State>
       </Pad>
     </Pads>
+=======
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Level2/Level2Control.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Level 1/level1Control.cs" Line="121" Column="40" />
+      <File FileName="Assets/Scripts/CharAnimator.cs" Line="34" Column="3" />
+      <File FileName="Assets/Scripts/SmoothCamera.cs" Line="27" Column="88" />
+      <File FileName="Assets/Scripts/Level2/Level2Control.cs" Line="91" Column="34" />
+    </Files>
+>>>>>>> 1b96e24106fe7c442bd0d0e509aa35e3fa75c200
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

@@ -8,7 +8,6 @@ public class Rose : Flower {
 
 		name = "Rose";
 		id = 1;
-
 	
 	}
 	
