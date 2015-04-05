@@ -1,22 +1,17 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/level1objective.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Fireball.cs">
     <Files>
-      <File FileName="Assets/Scripts/Controller.cs" Line="106" Column="1" />
-      <File FileName="Assets/Scripts/HealthBar.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/FlameAnim.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/FlameDamage.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/LevelChange.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Inventory.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/level0objective.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/level1objective.cs" Line="18" Column="6" />
+      <File FileName="Assets/Scripts/CharAnimator.cs" Line="34" Column="45" />
+      <File FileName="Assets/Scripts/Fireball.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Scripts" expanded="True" selected="True">
+            <Node name="Scripts" expanded="True">
               <Node name="Level 1" expanded="True" />
+              <Node name="CharAnimator.cs" selected="True" />
             </Node>
           </Node>
         </State>

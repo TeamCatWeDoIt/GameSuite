@@ -16,6 +16,7 @@ public class FlameAnim : MonoBehaviour {
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		switchs = true;
 		spriteRenderer.sprite = sprite1; // set the sprite to sprite1
+		// spriteRenderer.color = new Color(1f,1f,1f,.8f); // 50%
 	}
 	
 	// Update is called once per frame
