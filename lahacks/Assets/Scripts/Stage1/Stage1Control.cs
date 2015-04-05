@@ -70,23 +70,31 @@ public class Stage1Control : MonoBehaviour {
 				BroadcastMessage ("jump");
 			}
 		
-			if (Input.GetKey (KeyCode.RightArrow)) {
-				//print("Forward!");
-				//this.transform.position+= Vector3.right * 0.2F;
-				goY.AddForce (new Vector2 (10, 0));
-				//camera1.transform.position = new Vector2(go.transform.position.x, go.transform.position.y);
+			if (Input.GetKey ("right")) {
+				
+				this.transform.position += Vector3.right * 0.1F;	// using 3d vector for this still
+				
+				if (Input.GetKeyDown ("right"))
+				{
+					goY.AddForce (Vector2.right * 40.0f);
+				}
+				
 				if (!facingRight) {
 					Flip ();
 					facingRight = true;			// facing right
 				}
-			
-			
 			}
 		
-			if (Input.GetKey (KeyCode.LeftArrow)) {
+			if (Input.GetKey ("left")) {
 				//print("Forward!");
-				goY.AddForce (new Vector2 (-10, 0));
-				//camera1.transform.position = new Vector2(go.transform.position.x, go.transform.position.y);
+				
+				this.transform.position -= Vector3.right * 0.1F;	// using 3d vector for this still
+				
+				if (Input.GetKeyDown ("left"))
+				{
+					goY.AddForce (-Vector2.right * 40.0f);
+				}
+				
 				if (facingRight) {
 					Flip ();
 					facingRight = false;			// facing right
