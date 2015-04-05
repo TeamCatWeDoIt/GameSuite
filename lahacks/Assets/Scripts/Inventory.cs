@@ -1,38 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using System;
 
 public class Inventory : MonoBehaviour {
 
-
-	class inventoryItem
-	{
-		public int id; // each item will have an associated id
-		public string name; // each item will have an associated name
-		public int quantity; // each item has a number, when it hits 0 it should disappear from inventory
-		public string imgPath;
-
-		public inventoryItem()
-		{
-			id = 0;
-			name = "Empty";
-			quantity = 0;
-		}
-
-	}
+//
+//	class inventoryItem
+//	{
+//		public int id; // each item will have an associated id
+//		public string name; // each item will have an associated name
+//		public int quantity; // each item has a number, when it hits 0 it should disappear from inventory
+//
+//		public inventoryItem()
+//		{
+//			id = 0;
+//			name = "Empty";
+//			quantity = 0;
+//		}
+//
+//	}
 
 
 	int sizeOfInventory;
-	inventoryItem [] myArray;  // declaration
+	Text[] myArray;  // declaration
 
 
 
 	// Use this for initialization
 	void Start () {
-		sizeOfInventory = 3;
-		myArray = new inventoryItem[sizeOfInventory]; 
-		for (int i = 0; i<sizeOfInventory; i++) {
-			myArray[i] = new inventoryItem();
-		}
+		sizeOfInventory = 5;
+		myArray = new Text[sizeOfInventory];
+		myArray [0] = GameObject.Find ("Poppy").transform.GetComponent<Text>();
+		myArray [1] = GameObject.Find ("Gentian").transform.GetComponent<Text>();
+		myArray [2] = GameObject.Find ("Oxeye").transform.GetComponent<Text>();
+		myArray [3] = GameObject.Find ("Purple").transform.GetComponent<Text>();
+		myArray [4] = GameObject.Find ("Rose").transform.GetComponent<Text>();
+
 	}
 	
 	// Update is called once per frame
@@ -63,57 +67,13 @@ public class Inventory : MonoBehaviour {
 		// Add items will take the name, and quantity
 		// First check if existing
 		// if it already exists
-		if (checkExisting (g.name) != -1) {
-			// -1 means that the item does not exist
-			// if it is not -1, the object exists and we must update it
-			myArray [checkExisting (g.name)].quantity += q; 	// add on the quantity.
-
-		}
-
-		// otherwise, find the nearest inventory slot
-		// and add the item to it
-		// // TODO: Implement this feature
-		else {
-			int a = findEmptyInventorySlot();
-			if(a == -1)
+			if (g.name.Contains("rose")) 
 			{
-				print("Inventory full! Cannot pick up anymore!");
+				int orig = Int32.Parse(myArray[4].text.ToString());
+				orig += q;
+				myArray[4].text = orig.ToString();
 			}
-			else
-			{
-				myArray[a].name = g.name;
-				myArray[a].quantity +=q;
-
-				print("Picked Up " + g.name);
-			}
-		}
-		printContents ();
 
 	}
-
-	int checkExisting(string n)
-	{
-		for (int x = 0; x < sizeOfInventory; x++)
-		{
-			// compare the names
-			if (myArray[x].name == n)
-			{
-				// if they are the same
-				return x; // return the index
-			}
-
-		}
-		print ("No repeats; item does not yet exist in inventory");
-		return -1;
-	}
-
-	int findEmptyInventorySlot()
-	{
-		for (int x = 0; x < sizeOfInventory; x++) {
-			if (myArray [x].name == "Empty") {
-				return x;
-			}
-		}
-		return -1;
-	}
+	
 }

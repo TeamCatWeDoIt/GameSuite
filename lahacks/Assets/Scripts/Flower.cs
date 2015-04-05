@@ -2,11 +2,12 @@
 using System.Collections;
 
 public class Flower : Item {
+	
 
 	// Use this for initialization
 	void Start () {
 
-		damage = 0;			// flowers shouldn't do any damage!
+		damage = 0; // flowers shouldn't do any damage!
 
 	}
 	
@@ -27,5 +28,4 @@ public class Flower : Item {
 			Destroy (this.gameObject);
 		}
 	}
-
 }

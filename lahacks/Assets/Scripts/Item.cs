@@ -7,6 +7,7 @@ public class Item : MonoBehaviour {
 	protected int id;				// each item will have a unique id
 	protected string name;		// each item has a name
 
+
 	// Use this for initialization
 	void Start () {
 
