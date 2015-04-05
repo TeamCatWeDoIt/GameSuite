@@ -24,7 +24,8 @@ public class Flower : Item {
 
 		if (collision.gameObject.name == "Player") {
 			// print ("Picked up");
-			collision.gameObject.SendMessage ("pickedUp", this.gameObject);		// sends player a "pickedUp" message with item NAME
+			//collision.gameObject.SendMessage ("pickedUp", this.gameObject);		// sends player a "pickedUp" message with item NAME
+			GameObject.Find ("GlobalGameManager").SendMessage("pickedUp", this.gameObject);
 			Destroy (this.gameObject);
 		}
 	}

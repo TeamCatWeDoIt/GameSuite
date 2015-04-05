@@ -5,6 +5,7 @@ using System;
 
 public class Inventory : MonoBehaviour {
 
+
 //
 //	class inventoryItem
 //	{
@@ -22,13 +23,14 @@ public class Inventory : MonoBehaviour {
 //	}
 
 
-	int sizeOfInventory;
-	Text[] myArray;  // declaration
+	public int sizeOfInventory;
+	public Text[] myArray;  // declaration
 
 
 
 	// Use this for initialization
 	void Start () {
+
 		sizeOfInventory = 5;
 		myArray = new Text[sizeOfInventory];
 		myArray [0] = GameObject.Find ("Poppy").transform.GetComponent<Text>();
@@ -42,7 +44,6 @@ public class Inventory : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
 	
 	}
 
@@ -55,6 +56,7 @@ public class Inventory : MonoBehaviour {
 		}
 
 	}
+
 
 	void pickedUp(GameObject g)
 	{
