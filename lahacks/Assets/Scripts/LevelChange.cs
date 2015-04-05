@@ -30,11 +30,10 @@ public class LevelChange : MonoBehaviour {
 		print ("Message Recieved!");
 		conditionMet = true;
 	}
-
-
+	
 	// Handle collisions and load the next level
 
-	void OnCollisionEnter(Collision collision) {
+	void OnCollisionEnter2D(Collision2D collision) {
 
 		print (collision.gameObject.name + " has collided with level change point" + conditionMet);
 

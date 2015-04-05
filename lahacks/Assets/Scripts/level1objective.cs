@@ -11,8 +11,8 @@ public class level1objective : MonoBehaviour {
 	GameObject obj;
 	
 	void Start () {
-		obi = GameObject.Find ("StartPoint");	// find and store a reference to the startpoint.
-		obj = GameObject.Find ("EndPoint");	// find and store a reference to the endpoint.
+		obi = GameObject.Find ("StartPointSprite");	// find and store a reference to the startpoint.
+		obj = GameObject.Find ("EndPointSprite");	// find and store a reference to the endpoint.
 
 		obi.SendMessage ("conditionMetTrue"); // broadcast a "true" since intro level has nothing.
 		obj.SendMessage ("conditionMetTrue"); // broadcast a "true" since intro level has nothing.

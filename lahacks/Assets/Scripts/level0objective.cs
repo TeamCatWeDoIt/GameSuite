@@ -11,7 +11,7 @@ public class level0objective : MonoBehaviour {
 	GameObject obj;
 
 	void Start () {
-		obj = GameObject.Find ("EndPoint");	// find and store a reference to the endpoint.
+		obj = GameObject.Find ("EndpointSprite");	// find and store a reference to the endpoint.
 		obj.SendMessage ("conditionMetTrue"); // broadcast a "true" since intro level has nothing.
 	
 	}

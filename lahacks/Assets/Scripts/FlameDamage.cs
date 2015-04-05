@@ -32,7 +32,7 @@ public class FlameDamage : MonoBehaviour {
 		distToPlayerX = Mathf.Abs(this.transform.position.x - go.transform.position.x);
 		distToPlayerY = Mathf.Abs(this.transform.position.y - go.transform.position.y);
 
-		 print (distToPlayerX + ", " + distToPlayerY);
+		 //print (distToPlayerX + ", " + distToPlayerY);
 
 	}
 }
