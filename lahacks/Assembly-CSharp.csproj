@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\FlameAnim.cs" />
      <Compile Include="Assets\Scripts\FlameDamage.cs" />
      <Compile Include="Assets\Scripts\Flower.cs" />
+     <Compile Include="Assets\Scripts\GlobalManagerScript.cs" />
      <Compile Include="Assets\Scripts\HealthBar.cs" />
      <Compile Include="Assets\Scripts\Inventory.cs" />
      <Compile Include="Assets\Scripts\Item.cs" />
@@ -59,9 +60,14 @@
      <Compile Include="Assets\Scripts\LevelChange.cs" />
      <Compile Include="Assets\Scripts\Rose.cs" />
      <Compile Include="Assets\Scripts\SmoothCamera.cs" />
+<<<<<<< HEAD
      <Compile Include="Assets\Scripts\Stage1\LeftRight.cs" />
      <Compile Include="Assets\Scripts\Stage1\Stage1Control.cs" />
      <Compile Include="Assets\Scripts\Stage1\UpDown.cs" />
+=======
+     <Compile Include="Assets\Scripts\level0objective.cs" />
+     <Compile Include="Assets\Scripts\level1objective.cs" />
+>>>>>>> origin/master
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
