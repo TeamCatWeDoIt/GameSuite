@@ -28,6 +28,7 @@ public class Stage1Control : MonoBehaviour {
 		jumping = false; 	// we are not jumping at the beginning
 		canPickUp = true;
 		holdingItem = false;
+		flowerTaken = false;
 		isDead = false;
 		go = GameObject.Find ("Player");
 		camera1 = GameObject.Find ("main Camera");// finds the player object

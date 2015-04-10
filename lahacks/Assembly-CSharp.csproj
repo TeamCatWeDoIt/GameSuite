@@ -48,6 +48,9 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CharAnimator.cs" />
      <Compile Include="Assets\Scripts\Controller.cs" />
+     <Compile Include="Assets\Scripts\EnemyMotions\LeftRight.cs" />
+     <Compile Include="Assets\Scripts\EnemyMotions\Snake.cs" />
+     <Compile Include="Assets\Scripts\EnemyMotions\UpDown.cs" />
      <Compile Include="Assets\Scripts\Fireball.cs" />
      <Compile Include="Assets\Scripts\FlameAnim.cs" />
      <Compile Include="Assets\Scripts\FlameDamage.cs" />
@@ -61,10 +64,8 @@
      <Compile Include="Assets\Scripts\LevelChange.cs" />
      <Compile Include="Assets\Scripts\Rose.cs" />
      <Compile Include="Assets\Scripts\SmoothCamera.cs" />
-     <Compile Include="Assets\Scripts\Stage1\LeftRight.cs" />
      <Compile Include="Assets\Scripts\Stage1\Stage1Control.cs" />
      <Compile Include="Assets\Scripts\Stage1\Stump.cs" />
-     <Compile Include="Assets\Scripts\Stage1\UpDown.cs" />
      <Compile Include="Assets\Scripts\level0objective.cs" />
      <Compile Include="Assets\Scripts\level1objective.cs" />
      <Compile Include="Assets\Scripts\trunkobjective.cs" />
