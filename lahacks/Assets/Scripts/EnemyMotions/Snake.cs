@@ -22,8 +22,8 @@ public class Snake : MonoBehaviour {
 		movingRight = true;
 		currX = gameObject.transform.position.x;
 		currY = gameObject.transform.position.y;
-		maxX = currX + 10;
-		minX = currX - 10;
+		maxX = currX + 50;
+		minX = currX - 50;
 		maxY = currY + 6;
 		minY = currY - 6;
 	}
@@ -35,7 +35,7 @@ public class Snake : MonoBehaviour {
 		{
 			if (currX <= maxX & movingRight) {
 				currX += 1;
-				Vector3 temp = new Vector3 (0.4f, 0, 0);
+				Vector3 temp = new Vector3 (0.2f, 0, 0);
 				gameObject.transform.position+= temp;
 				if(currX > maxX)
 				{
@@ -45,7 +45,7 @@ public class Snake : MonoBehaviour {
 			else if(currX >= minX & !movingRight)
 			{
 				currX -= 1;
-				Vector3 temp = new Vector3(-0.4f, 0, 0);
+				Vector3 temp = new Vector3(-0.2f, 0, 0);
 				gameObject.transform.position += temp;
 				if(currX < minX)
 				{
