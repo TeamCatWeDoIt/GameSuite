@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CharAnimator.cs" />
      <Compile Include="Assets\Scripts\Controller.cs" />
+     <Compile Include="Assets\Scripts\EnemyMotions\EatingFlower.cs" />
      <Compile Include="Assets\Scripts\EnemyMotions\LeftRight.cs" />
      <Compile Include="Assets\Scripts\EnemyMotions\Snake.cs" />
      <Compile Include="Assets\Scripts\EnemyMotions\UpDown.cs" />
