@@ -22,8 +22,8 @@ public class Snake : MonoBehaviour {
 		movingRight = true;
 		currX = gameObject.transform.position.x;
 		currY = gameObject.transform.position.y;
-		maxX = currX + 50;
-		minX = currX - 50;
+		maxX = currX + 20;
+		minX = currX - 20;
 		maxY = currY + 6;
 		minY = currY - 6;
 	}

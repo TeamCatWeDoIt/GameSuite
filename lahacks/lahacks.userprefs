@@ -1,10 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EnemyMotions/Snake.cs">
     <Files>
-      <File FileName="Assets/Scripts/Stage1/Stage1Control.cs" Line="31" Column="23" />
+      <File FileName="Assets/Scripts/Level2/Level2Control.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Stage1/Stage1Control.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/EnemyMotions/Snake.cs" Line="38" Column="36" />
-      <File FileName="Assets/Scripts/EnemyMotions/LeftRight.cs" Line="37" Column="13" />
+      <File FileName="Assets/Scripts/EnemyMotions/LeftRight.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
