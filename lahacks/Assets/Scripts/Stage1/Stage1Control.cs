@@ -19,6 +19,7 @@ public class Stage1Control : MonoBehaviour {
 	bool canPickUp;
 	bool holdingItem;
 	bool isDead;
+	public GameObject projectile;
 	
 	
 	// Use this for initialization
@@ -44,56 +45,70 @@ public class Stage1Control : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!isDead) 
+		if (gameObject.transform.position.y < 0)
 		{
-			if (holdingItem) 
-			{
-				if (facingRight)
+			handleDeath();
+		}
+		
+		if (!isDead) {
+			if (holdingItem == true) {
+				if(facingRight)
 					itemToHold.transform.position = (Vector2)(this.transform.position) + (Vector2)objectDist;
-				else {
-					Vector2 reverseVec = new Vector2 ();
-					Vector2 testVec = new Vector2 (-objectDist.x, objectDist.y);
-					itemToHold.transform.position = (Vector2)(this.transform.position) + (Vector2)testVec;
+				else
+				{
+					Vector2 testVec = new Vector2(-objectDist.x, objectDist.y);
+					itemToHold.transform.position = (Vector2)(gameObject.transform.position) + (Vector2)testVec;
 				}
 			}
-		
-			if (Input.GetKeyDown (KeyCode.Tab)) {
-				// print("Printing contents of inventory!");
-				SendMessage ("printContents");
 			
+			if (Input.GetKeyDown ("tab")) {
+				print("Printing contents of inventory!");
+				SendMessage ("printContents");
+				
 			}
-		
-			if (Input.GetKeyDown (KeyCode.UpArrow) && !jumping) {
+			
+			if (Input.GetKeyDown ("z")) {		// if z is pressed down
+				print("Shooting out fireball!");
+				BroadcastMessage("attack");
+				GameObject flame = Instantiate(projectile);
+				flame.SendMessage("setDirection",facingRight);
+			}
+			
+			if (Input.GetKeyDown ("up") && !jumping) {
+				print ("Jump!");
 				// I would like to have a very smooth "jump"
 				//this.transform.position+= Vector3.up * 0.2F; 
 				jumping = true;
 				StartCoroutine ("Jump");
-				BroadcastMessage ("jump");
+				BroadcastMessage("jump");
 			}
-		
+			
 			if (Input.GetKey ("right")) {
-				
-				this.transform.position += Vector3.right * 0.1F;	// using 3d vector for this still
-				
-				if (Input.GetKeyDown ("right"))
-				{
-					goY.AddForce (Vector2.right * 40.0f);
-				}
-				
+
+				Vector3 temp = new Vector3(0.1f, 0, 0);
+				gameObject.transform.position += temp;	// using 3d vector for this still
+
 				if (!facingRight) {
 					Flip ();
 					facingRight = true;			// facing right
 				}
+
+				if (Input.GetKeyDown ("up"))
+				{
+					goY.AddForce (Vector2.up * 40.0f);
+				}
+				
+
 			}
-		
+			
 			if (Input.GetKey ("left")) {
 				//print("Forward!");
 				
-				this.transform.position -= Vector3.right * 0.1F;	// using 3d vector for this still
+				gameObject.transform.position -= Vector3.right * 0.1F;	// using 3d vector for this still
 				
-				if (Input.GetKeyDown ("left"))
+				if (Input.GetKeyDown ("up"))
 				{
-					goY.AddForce (-Vector2.right * 40.0f);
+					goY.AddForce (Vector2.up * 40.0f);
 				}
 				
 				if (facingRight) {
@@ -101,29 +116,33 @@ public class Stage1Control : MonoBehaviour {
 					facingRight = false;			// facing right
 				}
 			}
-		
-			if (Input.GetKey (KeyCode.DownArrow)) {
-				//print("Down!!");
-				goY.AddForce (new Vector2 (0, 50));
-			}
-		
-			if (Input.GetKeyDown (KeyCode.Space) & canPickUp & !holdingItem) 
+			if (Input.GetKey("up"))
 			{
-
-				itemToHold.transform.position += new Vector3 (1.0f, 1.0f, 0.0f);
+				Jump();
+			}
+			
+			if (Input.GetKey ("down")) {
+				goY.AddForce (-Vector2.up * 50.0f);
+			}
+			
+			if (Input.GetKeyDown ("space") && canPickUp && !holdingItem) {
+				
+				print ("Attempting to pickup.");
+				holdingItem = true;
+				itemToHold.transform.position = (Vector2)itemToHold.transform.position + new Vector2(0.23f, 1.0f);
 				// Freeze the position between the two objects while space is held down 
 				objectDist = itemToHold.transform.position - this.transform.position;
-				holdingItem = true;
-			} 
-			else if (Input.GetKeyDown ("space") & holdingItem) {
+			}
 			
-				print ("Attempting to drop.");
+			else if (Input.GetKeyDown ("space") && holdingItem) {
+				
+				print ("Attempting to drop/throw");
 				holdingItem = false;
-				Rigidbody tempThrow = itemToHold.GetComponent<Rigidbody> (); // gets the rigid body
+				Rigidbody2D tempThrow = itemToHold.GetComponent<Rigidbody2D> (); // gets the rigid body
 				print (this.transform.forward);
 				// Vector3 tempU = new Vector3(0.0f, 80.0f, 1.0f);
-				Vector3 tempR = new Vector3(70.0f, 50.0f, 1.0f);
-				Vector3 tempL = new Vector3(-70.0f, 50.0f, 1.0f);
+				Vector2 tempR = new Vector2(70.0f, 50.0f);
+				Vector2 tempL = new Vector2(-70.0f, 50.0f);
 				/*
 				 * if (Input.GetKey ("up"))
 				    {
@@ -132,20 +151,25 @@ public class Stage1Control : MonoBehaviour {
 				}
 				*/
 				if (facingRight)
+				{
 					tempThrow.AddForce(tempR);
+				}
 				else
+				{
 					tempThrow.AddForce(tempL);
-				
+				}
 				// itemToHold.transform.position += goY.velocity;
-
+				
 			}
+			
 		}
 		
-		if (Input.GetKeyDown ("space") & isDead) {
+		if (Input.GetKeyDown ("space") && isDead) {
 			SendMessage("respawn");
 			isDead = false;
 			BroadcastMessage("defaultPose");
 		}
+		
 
 	}
 	

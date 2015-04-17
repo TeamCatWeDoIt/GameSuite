@@ -3,11 +3,11 @@ using System.Collections;
 
 public class CharAnimator : MonoBehaviour {
 
-	public Sprite sprite0; // Drag your 0 sprite here
-	public Sprite sprite1; // Drag your first sprite here
-	public Sprite sprite2; // Drag your second sprite here
-	public Sprite sprite3; // Drag your second sprite here
-	public Sprite sprite4; // Drag your second sprite here
+	public Sprite idleSprite; // Drag your 0 sprite here
+	public Sprite normalSprite; // Drag your first sprite here
+	public Sprite jumpSprite; // Drag your second sprite here
+	public Sprite deadSprite; // Drag your second sprite here
+	public Sprite attackSprite; // Drag your second sprite here
 
 
 	bool action;
@@ -16,11 +16,9 @@ public class CharAnimator : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-		spriteRenderer = GetComponent<SpriteRenderer>();
+		spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 		action = false;
-		spriteRenderer.sprite = sprite1; // set the sprite to sprite1
-	
+
 	}
 	
 	// Update is called once per frame
@@ -32,12 +30,12 @@ public class CharAnimator : MonoBehaviour {
 	void attack()
 	{
 		// Attack sequence will launch a fireball.
-		spriteRenderer.sprite = sprite4;
+		spriteRenderer.sprite = attackSprite;
 	}
 
 	void jump()
 	{
-		spriteRenderer.sprite = sprite2;
+		spriteRenderer.sprite = jumpSprite;
 	}
 
 	void defaultPose()
@@ -50,17 +48,17 @@ public class CharAnimator : MonoBehaviour {
 	void dead()
 	{
 		//action = true; 	// BEING DEAD CAN BE AN ACTION TOO.
-		spriteRenderer.sprite = sprite3;
+		spriteRenderer.sprite = deadSprite;
 	}
 
 	IEnumerator idle()
 	{	
 		// Multiply the player's x local scale by -1
-		spriteRenderer.sprite = sprite1;
+		spriteRenderer.sprite = normalSprite;
 		yield return new WaitForSeconds(0.5f);
-		spriteRenderer.sprite = sprite0;
+		spriteRenderer.sprite = idleSprite;
 		yield return new WaitForSeconds(0.5f);
-		spriteRenderer.sprite = sprite1;
+		spriteRenderer.sprite = normalSprite;
 	}
 
 

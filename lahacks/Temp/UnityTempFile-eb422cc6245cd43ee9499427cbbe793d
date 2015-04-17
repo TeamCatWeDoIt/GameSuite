@@ -57,7 +57,7 @@
 -define:UNITY_EDITOR_OSX
 'Assets/Scripts/CharAnimator.cs'
 'Assets/Scripts/Controller.cs'
-'Assets/Scripts/EnemyMotions/FlowerEating.cs'
+'Assets/Scripts/EnemyMotions/EatingFlower.cs'
 'Assets/Scripts/EnemyMotions/LeftRight.cs'
 'Assets/Scripts/EnemyMotions/Snake.cs'
 'Assets/Scripts/EnemyMotions/UpDown.cs'
