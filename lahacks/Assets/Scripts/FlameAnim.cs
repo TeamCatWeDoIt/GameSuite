@@ -43,7 +43,7 @@ public class FlameAnim : MonoBehaviour {
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
-		print ("FLip");
+		// print ("FLip");
 		yield return new WaitForSeconds(0.5f);
 		switchs = true;
 

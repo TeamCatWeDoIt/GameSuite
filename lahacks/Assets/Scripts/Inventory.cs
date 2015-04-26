@@ -31,6 +31,9 @@ public class Inventory : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+	//	DontDestroyOnLoad(transform.gameObject);
+
 		currentInvSize = 0;
 		sizeOfInventory = 5;
 
