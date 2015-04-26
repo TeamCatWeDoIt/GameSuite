@@ -208,7 +208,7 @@ public class Stage1Control : MonoBehaviour {
 		if (name == "Portal") 
 		{
 		}
-		if (name == "rose" || name =="purpleFlower" || name == "poppy") 
+		if (name == "rose" || name =="purpleFlower" || name == "poppy" || name == "oxeye") 
 		{
 			flowerTaken = true;
 			BroadcastMessage("pickedUp", collision.gameObject);

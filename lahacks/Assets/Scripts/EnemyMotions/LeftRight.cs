@@ -9,12 +9,13 @@ public class LeftRight : MonoBehaviour {
 	float currX;
 	bool destroyed;
 	bool movingRight;
+	public float diff = 10.0f;
 
 	void Start () 
 	{
 		currX = gameObject.transform.position.x;
-		maxX = currX + 10;
-		minX = currX - 10;
+		maxX = currX + diff;
+		minX = currX - diff;
 		movingRight = true;
 		destroyed = false;
 	}

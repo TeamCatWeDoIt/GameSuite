@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\Fireball.cs" />
      <Compile Include="Assets\Scripts\FlameAnim.cs" />
      <Compile Include="Assets\Scripts\FlameDamage.cs" />
+     <Compile Include="Assets\Scripts\FlameWalk.cs" />
      <Compile Include="Assets\Scripts\Flower.cs" />
      <Compile Include="Assets\Scripts\GlobalManagerScript.cs" />
      <Compile Include="Assets\Scripts\HealthBar.cs" />
