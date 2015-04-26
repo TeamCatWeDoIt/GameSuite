@@ -19,7 +19,10 @@ public class Stage1Control : MonoBehaviour {
 	bool canPickUp;
 	bool holdingItem;
 	bool isDead;
+	bool notInAir = true;
 	public GameObject projectile;
+
+	public float shroomForce = 1000.0f;
 	
 	
 	// Use this for initialization
@@ -119,7 +122,7 @@ public class Stage1Control : MonoBehaviour {
 					facingRight = false;			// facing right
 				}
 			}
-			if (Input.GetKey("up"))
+			if (Input.GetKey("up") || notInAir)
 			{
 				Jump();
 			}
@@ -194,7 +197,6 @@ public class Stage1Control : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collision) {
 		
 		// On collision, allow character to jump again. (wall jumps)
-		jumping = false;
 		BroadcastMessage ("defaultPose");
 		
 		
@@ -224,6 +226,20 @@ public class Stage1Control : MonoBehaviour {
 			// Some code to bring us to the start point of a level
 			// Load new level
 			
+		}
+		if (collision.gameObject.name.Contains ("mushroom")) 
+		{
+			jumping = true;
+			gameObject.GetComponent<Rigidbody2D> ().AddForce(Vector2.up * shroomForce);
+		}
+		if (collision.gameObject.name.Contains ("background") || collision.gameObject.name.Contains("Background")) 
+		{
+			jumping = false;
+		}
+
+		if (collision.gameObject.name.Contains ("spider")) 
+		{
+
 		}
 		
 	}
