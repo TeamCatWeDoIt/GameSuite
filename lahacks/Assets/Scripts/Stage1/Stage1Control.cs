@@ -198,26 +198,27 @@ public class Stage1Control : MonoBehaviour {
 		
 		// On collision, allow character to jump again. (wall jumps)
 		BroadcastMessage ("defaultPose");
+		string name = collision.gameObject.name;
 		
 		
 		// Check for endpoint (crude, could be done better)
-		if (collision.gameObject.name == "Portal" & flowerTaken) {
+		if (name == "Portal" & flowerTaken) {
 			Application.LoadLevel ("trunkstage");
 		} 
-		if (collision.gameObject.name == "Portal") 
+		if (name == "Portal") 
 		{
 		}
-		if (collision.gameObject.name == "rose" || collision.gameObject.name =="purpleFlower") 
+		if (name == "rose" || name =="purpleFlower" || name == "poppy") 
 		{
 			flowerTaken = true;
 			BroadcastMessage("pickedUp", collision.gameObject);
 			Destroy (collision.gameObject);
 		} 
-		if (collision.gameObject.name.Contains ("Stump") | collision.gameObject.name.Contains ("Flame")) 
+		if (name.Contains ("Stump") | name.Contains ("Flame")) 
 		{
 			BroadcastMessage ("takeDamage", 1);
 		} 
-		if (collision.gameObject.name.Contains("Rock") & !holdingItem) 
+		if (name.Contains("Rock") & !holdingItem) 
 		{
 			
 			canPickUp = true;
@@ -227,17 +228,22 @@ public class Stage1Control : MonoBehaviour {
 			// Load new level
 			
 		}
-		if (collision.gameObject.name.Contains ("mushroom")) 
+		if (name.Contains ("mushroom")) 
 		{
 			jumping = true;
+			float vel = gameObject.GetComponent<Rigidbody2D>().velocity.x;
+			print (vel);
 			gameObject.GetComponent<Rigidbody2D> ().AddForce(Vector2.up * shroomForce);
+
+
+
 		}
-		if (collision.gameObject.name.Contains ("background") || collision.gameObject.name.Contains("Background")) 
+		if (name.Contains ("background") || name.Contains("Background")) 
 		{
 			jumping = false;
 		}
 
-		if (collision.gameObject.name.Contains ("spider")) 
+		if (name.Contains ("spider")) 
 		{
 
 		}
