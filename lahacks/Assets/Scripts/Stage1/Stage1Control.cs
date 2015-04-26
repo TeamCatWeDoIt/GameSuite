@@ -100,7 +100,10 @@ public class Stage1Control : MonoBehaviour {
 				
 
 			}
-			
+			if(Input.GetKey("space"))
+			{
+
+			}
 			if (Input.GetKey ("left")) {
 				//print("Forward!");
 				
@@ -125,7 +128,7 @@ public class Stage1Control : MonoBehaviour {
 				goY.AddForce (-Vector2.up * 50.0f);
 			}
 			
-			if (Input.GetKeyDown ("space") && canPickUp && !holdingItem) {
+			if (Input.GetKeyDown ("space") && canPickUp && !holdingItem && itemToHold != null) {
 				
 				print ("Attempting to pickup.");
 				holdingItem = true;
@@ -199,24 +202,24 @@ public class Stage1Control : MonoBehaviour {
 		if (collision.gameObject.name == "Portal" & flowerTaken) {
 			Application.LoadLevel ("trunkstage");
 		} 
-		else if (collision.gameObject.name == "Portal") 
+		if (collision.gameObject.name == "Portal") 
 		{
 		}
-		else if (collision.gameObject.name == "rose") 
+		if (collision.gameObject.name == "rose" || collision.gameObject.name =="purpleFlower") 
 		{
 			flowerTaken = true;
 			BroadcastMessage("pickedUp", collision.gameObject);
 			Destroy (collision.gameObject);
 		} 
-		else if (collision.gameObject.name.Contains ("Stump") | collision.gameObject.name.Contains ("Flame")) 
+		if (collision.gameObject.name.Contains ("Stump") | collision.gameObject.name.Contains ("Flame")) 
 		{
 			BroadcastMessage ("takeDamage", 1);
 		} 
-		else if (collision.gameObject.name.Contains ("Rock") & !holdingItem) 
+		if (collision.gameObject.name.Contains("Rock") & !holdingItem) 
 		{
 			
 			canPickUp = true;
-			itemToHold = GameObject.Find (collision.gameObject.name);
+			itemToHold = GameObject.Find(collision.gameObject.name);
 			
 			// Some code to bring us to the start point of a level
 			// Load new level
